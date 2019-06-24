@@ -26,7 +26,7 @@ logger = logging.getLogger()
 #logger.setLevel(logging.DEBUG)
 
 # To filter mexico data based on lat and long
-@F.udf(returnType=BooleanType())
+#@F.udf(returnType=BooleanType())
 def mexico_filter(latitude,longitude):
     geo = reverse_geocoder.RGeocoder(mode=1, verbose=True, stream=obj_data)
     coordinates = (latitude, longitude),(latitude, longitude)
@@ -100,7 +100,8 @@ for key_path in filtered_keys:
 
     glueContext=GlueContext(SparkContext.getOrCreate())
     whisper_geo_df_dynamicFrame=DynamicFrame.fromDF(whisper_geo_df,glueContext,"SparkContext_to_GlueContext")
-    mexico_filter_df=whisper_geo_df_dynamicFrame.filter(mexico_filter('_c1','_c2'))
+    #mexico_filter_df=whisper_geo_df_dynamicFrame.filter(mexico_filter('_c1','_c2'))
+    mexico_data = Filter.apply(frame = whisper_geo_df_dynamicFrame,f = lambda x: mexico_filter(x["_c1"],x["_c2"]))
     output_directory=key_path[key_path.find("/")+1:]
     output_path="s3a://"+target_s3_bucket+"/"+ output_directory
 
@@ -112,7 +113,6 @@ for key_path in filtered_keys:
           connection_options={'compression':'gzip'}
           format_options={'separator': '|'}
           ) 
-
     #mexico_filter_df.write.format("com.databricks.spark.csv").option("codec","org.apache.hadoop.io.compress.GzipCodec").option("sep", "|").mode("append").save(output_path)
 
 end_time = datetime.datetime.now()

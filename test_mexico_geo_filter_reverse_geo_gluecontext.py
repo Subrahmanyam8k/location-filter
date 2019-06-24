@@ -20,9 +20,8 @@ import boto3
 from awsglue.transforms import *
 from pyspark.context import SparkContext
 
-
 # To filter mexico data based on lat and long
-@F.udf(returnType=BooleanType())
+#@F.udf(returnType=BooleanType())
 def mexico_filter(latitude,longitude):
     print(" ##################################################### Enrty of the User Defind Method is############################ ",latitude,longitude)
     geo = reverse_geocoder.RGeocoder(mode=1, verbose=True, stream=obj_data)
@@ -34,7 +33,6 @@ def mexico_filter(latitude,longitude):
             return True
     return False
 
-
 # Creates spark session
 spark = SparkSession \
             .builder \
@@ -44,7 +42,6 @@ spark = SparkSession \
 filtered_keys=['geo-intl/2018-10-27/data-00.csv.gz']
 source_s3_bucket='whisper-geo-history'
 target_s3_bucket='whisper-geo-archive-aleatica'
-
 
 for key_path in filtered_keys:
     print(key_path)
@@ -77,9 +74,6 @@ for key_path in filtered_keys:
     #mexico_filter_df.write.format("com.databricks.spark.csv").option("codec","org.apache.hadoop.io.compress.GzipCodec").option("sep", "|").mode("append").save(output_path)
 
 print(" ############# Script Ended ################")
-#logger.info("########################################################################################################################  EXIT THE PIPELINE  #######################################################################################################################################################################")
-#except Exception as e:
-#logger.exception('Exception occurs while filtering mexico geo data')
 
 
 
