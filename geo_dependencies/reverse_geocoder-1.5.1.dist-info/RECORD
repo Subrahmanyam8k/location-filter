@@ -1,0 +1,10 @@
+reverse_geocoder/__init__.py,sha256=ZLSmKQYhbWqpcY-uO2My8yP8WJy1egSLK-FbHtbMBkA,10293
+reverse_geocoder/cKDTree_MP.py,sha256=ky531wBY5EWkV3MRXcItk58Hwsu5G8epQz3HtLJbDPk,5131
+reverse_geocoder/rg_cities1000.csv,sha256=HeVtwysDCMYJTV2DNEHIyiWCfyTppqTMFEIjq1-bZb8,7851524
+reverse_geocoder-1.5.1.dist-info/METADATA,sha256=nUW6eybOGxDhdyGICnnFKLvH2h2BU8QdXbEtjgJdL14,1623
+reverse_geocoder-1.5.1.dist-info/WHEEL,sha256=wy6I0RkXf1SHQI9WgMGMZtkrPqc-c49UWrTH1_nKFnQ,93
+reverse_geocoder-1.5.1.dist-info/top_level.txt,sha256=iF2D-wXa_UZEB4p3jV-vEfWxIruzp9R9-CVJaHCBIpc,17
+reverse_geocoder-1.5.1.dist-info/RECORD,,
+reverse_geocoder-1.5.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+reverse_geocoder/__init__.pyc,,
+reverse_geocoder/cKDTree_MP.pyc,,
